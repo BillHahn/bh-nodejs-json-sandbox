@@ -1,4 +1,5 @@
 // Read Synchrously
+var numberOfBadRowsInInputFile = 0;
 var fs = require("fs");
 console.log("\n ***START*** \n");
 //READ JSON File
@@ -52,7 +53,20 @@ rl.on('line', function(line) {
 		}
 	console.log("\nthis is a ***PRUNED*** line => " + line);
 	//Parse line into a JSON object
-	jsonContent = JSON.parse(line);
+	try {
+		jsonContent = JSON.parse(line);
+	} catch (ex) {
+		// Handle error if possible
+		++numberOfBadRowsInInputFile;
+		console.log("\n");
+		console.log("**********************************************");
+		console.log("**********************************************");
+		console.log("**********************************************");		
+		console.log("     >>>>> Encountered a BAD ROW <<<<<<       ");
+		console.log("**********************************************");
+		console.log("**********************************************");
+		console.log("**********************************************");		
+	}
 	console.log("\nsku: " + jsonContent.sku +"\n" + "name: " + jsonContent.price + "\n");
 	console.log("\nCategory Info: \n");
 	var consoleMessage = '';
@@ -71,6 +85,12 @@ rl.on('line', function(line) {
 
 rl.on('close', function() {
   console.log("\n ***FINISHED*** \n");
+  if (numberOfBadRowsInInputFile > 0) {
+		console.log("\n\n\n***********************");
+		console.log("Number of Bad Formatted Rows in JSON file:");
+		console.log(">>>>>>> # " + numberOfBadRowsInInputFile + " <<<<<<<<<");
+		console.log("***********************\n\n\n");
+  }
 });
   
 console.log("\n ***END*** \n");
