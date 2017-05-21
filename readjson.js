@@ -81,7 +81,7 @@ rl.on('line', function(line) {
 		consoleMessage += " >>> ";
 		consoleMessage += jsonContent.category[i].name;		
 	}
-	console.log(consoleMessage);
+	console.log(consoleMessage); 
 //	console.log("\nThis is a line from a JSON Object: \n" + jsonContent[0]);
 //	console.log("User Name: " + jsonContent.username);
 //	console.log("Email: " + jsonContent.email);
