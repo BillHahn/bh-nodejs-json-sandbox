@@ -25,25 +25,6 @@ for(var i=0; i < jsonContent.length; ++i) {
 	console.log("Password: " + jsonContent[i].password);
 }
 
-/*
-//JSONStream approach
-console.log("\n JSONStream Approach!!! \n");
-//var fs = require('fs'),
-var JSONStream = require('JSONStream');
-var es = require('event-stream');
-
-var getStream = function () {
-    var jsonData = 'singlelines.json',
-        stream = fs.createReadStream(jsonData, {encoding: 'utf8'}),
-        parser = JSONStream.parse('*');
-        return stream.pipe(parser);
-};
-getStream()
-  .pipe(es.mapSync(function (data) {
-    console.log(data);
-  }));
-*/
-
 //Read JSON File ONE LINE AT A TIME
 console.log("\n ONE LINE AT A TIME for JSON file parsing!!! \n");
 //var fs = require('fs');
@@ -94,25 +75,3 @@ rl.on('close', function() {
   
 console.log("\n ***END*** \n");
   
-/*
-//Process one JSON element at a time
-var JSONStream = require('JSONStream');
-var  es = require('event-stream');
-var fileStream = fs.createReadStream('./', {encoding: 'utf8'});
-        fileStream.pipe(JSONStream.parse('singlelines.json')).pipe(es.through(function (data) {
-            console.log('printing one customer object read from file ::');
-            console.log(data);
-            //this.pause();
-            //processOneCustomer(data, this);
-            return data;
-        },function end () {
-            console.log('stream reading ended');
-            this.emit('end');
-          }));
-
-//    function processOneCustomer(data,es) {
-//		console.log("The data: " + data);
-//     //DataModel.save(function(err,dataModel){
-//     es.resume();
-//    }
-*/
