@@ -1,0 +1,3 @@
+[{"username":"abc","password":"abc@123","email":"abc@xyz.com","uid": 1100},
+{"username":"def","password":"def@123","email":"def@xyz.com","uid": 1101},
+{"username":"xyz","password":"xyz@123","email":"xyz@xyz.com","uid": 1102}]
